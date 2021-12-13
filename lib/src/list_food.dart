@@ -76,10 +76,15 @@ class _MyHomePageState extends State<ListViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Title(color: Colors.white, child: Text("Meal")),
+        ),
         body: Padding(
-      padding: const EdgeInsets.all(12),
-      child: _buildListViewBuilderFood(),
-    ));
+          padding: const EdgeInsets.all(12),
+          child: Container(
+            child: _buildListViewBuilderFood(),
+          ),
+        ));
   }
 
   Widget _buildListViewBuilderFood() {
@@ -89,7 +94,7 @@ class _MyHomePageState extends State<ListViewScreen> {
           return Column(
             children: [
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Container(
                 height: 80,
