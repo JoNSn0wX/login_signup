@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:login_signup/src/components/widget_button.dart';
 import 'package:login_signup/src/components/widget_input.dart';
-import 'package:login_signup/src/signup_screen.dart';
+import 'package:login_signup/src/login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _MyHomePageState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _MyHomePageState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +21,9 @@ class _MyHomePageState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const SizedBox(height: 100),
-                _buildImage(),
-                const SizedBox(height: 20),
+                const SizedBox(height: 90),
                 const Text(
-                  "Welcome Back",
+                  "Create Account",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -35,43 +32,31 @@ class _MyHomePageState extends State<LoginScreen> {
                       decoration: TextDecoration.none),
                 ),
                 const Text(
-                  "Sign to continue",
+                  "Create a new account",
                   style: TextStyle(
                       fontStyle: FontStyle.normal,
                       color: Colors.grey,
                       fontSize: 15,
                       decoration: TextDecoration.none),
                 ),
-                const SizedBox(
-                  height: 50,
-                ),
+                const SizedBox(height: 30),
+                _buildName(),
+                const SizedBox(height: 15),
                 _buildEmail(),
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
+                _buildPhone(),
+                const SizedBox(height: 15),
                 _buildPassword(),
                 const SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const <Widget>[
-                    Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontStyle: FontStyle.normal,
-                          color: Colors.green,
-                          decoration: TextDecoration.none),
-                    ),
-                  ],
-                ),
+                _buildConfirmPassword(),
                 const SizedBox(height: 35),
                 _buttonLogin(),
-                const SizedBox(height: 10),
+                const SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     const Text(
-                      "Don't have account?",
+                      "Already have a account?",
                       style: TextStyle(
                           fontSize: 15,
                           fontStyle: FontStyle.normal,
@@ -81,13 +66,13 @@ class _MyHomePageState extends State<LoginScreen> {
                     TextButton(
                       // chuyển màn hình
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
                       },
                       style: TextButton.styleFrom(
-                        primary: Colors.green,
-                        textStyle: const TextStyle(fontSize: 15)
-                      ),
-                      child: const Text("Create a new account"),
+                          primary: Colors.green,
+                          textStyle: const TextStyle(fontSize: 15)),
+                      child: const Text("Login"),
                     ),
                   ],
                 )
@@ -98,22 +83,38 @@ class _MyHomePageState extends State<LoginScreen> {
   }
 }
 
-Widget _buildImage() {
-  return SizedBox(
-    height: 135,
-    child: Image.network(
-        'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg'),
+Widget _buildName() {
+  return const WidgetInput(
+    name: 'Name',
+    obscureText: false,
+    iconData: Icons.person_outline,
   );
 }
 
 Widget _buildEmail() {
-  return const WidgetInput(name: "Email", obscureText: false, iconData: Icons.email_outlined);
+  return const WidgetInput(
+    name: 'Email',
+    obscureText: false,
+    iconData: Icons.email_outlined,
+  );
+}
+
+Widget _buildPhone() {
+  return const WidgetInput(
+    name: 'Phone',
+    obscureText: false,
+    iconData: Icons.phone_iphone_outlined
+  );
 }
 
 Widget _buildPassword() {
-  return const WidgetInput(name: "Password", obscureText: true, iconData: Icons.lock_outline);
+  return const WidgetInput(name: "Password", obscureText: true,iconData: Icons.lock_outline);
+}
+
+Widget _buildConfirmPassword() {
+  return const WidgetInput(name: "Confirm Password", obscureText: true,iconData: Icons.lock_outline);
 }
 
 Widget _buttonLogin() {
-  return const WidgetButton(name: "Login");
+  return const WidgetButton(name: "Create Account");
 }

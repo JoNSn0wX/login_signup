@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class WidgetInput extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
-  const WidgetInput({required this.name, required this.obscureText});
+  const WidgetInput({required this.name, required this.obscureText, required this.iconData});
   final String name;
   final bool obscureText;
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class WidgetInput extends StatelessWidget {
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: TextField(
           obscureText: obscureText,
-          decoration:  InputDecoration(
+          decoration: InputDecoration(
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -22,7 +23,7 @@ class WidgetInput extends StatelessWidget {
             focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.transparent),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
-            prefixIcon: const Icon(Icons.message),
+            prefixIcon: Icon(iconData),
             fillColor: Colors.white,
             hintText: name,
             filled: true,
