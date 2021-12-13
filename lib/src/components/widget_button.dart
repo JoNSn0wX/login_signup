@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_signup/src/list_food.dart';
 
 // ignore: must_be_immutable
 class WidgetButton extends StatelessWidget {
@@ -15,7 +16,9 @@ class WidgetButton extends StatelessWidget {
         height: 53,
         // ignore: deprecated_member_use
         child: RaisedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ListViewScreen()));
+          },
           child:  Text((name),
               style: const TextStyle(color: Colors.white, fontSize: 15)),
           shape: const RoundedRectangleBorder(
